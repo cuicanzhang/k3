@@ -64,14 +64,19 @@ namespace k3
             {
                 string qhlbName = "qh" + i + "LB";
                 string jhlbName = "jh" + i + "LB";
+                string hzlbName = "hz" + i + "LB";
+                string typelbName = "type" + i + "LB";
 
                 Label qhLB = this.FindName(qhlbName) as Label;
                 Label jhLB = this.FindName(jhlbName) as Label;
+                Label hzLB = this.FindName(hzlbName) as Label;
+                Label typeLB = this.FindName(typelbName) as Label;
                 if (qhLB != null && jhLB != null)
                 {
                     qhLB.Content = init_result["list"][i]["issue"].ToString();
                     jhLB.Content = init_result["list"][i]["awardNum"].ToString().Replace(",", "");
                 }
+                hzLB.Content = (int.Parse(jhLB.Content.ToString().Substring(0, 1)) + int.Parse(jhLB.Content.ToString().Substring(1, 1)) + int.Parse(jhLB.Content.ToString().Substring(2, 1))).ToString();
             }
             while (true)
             {
@@ -115,9 +120,16 @@ namespace k3
                     await Task.Run(() => Thread.Sleep(900));
                     nextIssueLB.Content = "距" + init_result["issue"].ToString() + "期开奖剩余：" + subTime.Minutes.ToString().PadLeft(2, '0') + ":" + subTime.Seconds.ToString().PadLeft(2, '0');
                     await Task.Delay(100);
-                }                           
-                    
-              
+                }
+                if (qh_next - qh == -86)
+                {
+                    nextIssueLB.Content = "每天08:20开售";
+                    break;
+                    //await Task.Run(() => Thread.Sleep(5000));
+                    //await Task.Delay(100);
+                }
+
+
               //  await Task.Delay(100);
             }
 

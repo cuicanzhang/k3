@@ -47,21 +47,21 @@
 
 
                 <Label Content="和值" HorizontalAlignment="Center" FontSize="18" Grid.Column="2" Grid.Row="2"/>
-                <Label Content="00" HorizontalAlignment="Center" FontSize="16" Grid.Column="2" Grid.Row="3"/>
-                <Label Content="00" HorizontalAlignment="Center" FontSize="16" Grid.Column="2" Grid.Row="4"/>
-                <Label Content="00" HorizontalAlignment="Center" FontSize="16" Grid.Column="2" Grid.Row="5"/>
-                <Label Content="00" HorizontalAlignment="Center" FontSize="16" Grid.Column="2" Grid.Row="6"/>
-                <Label Content="00" HorizontalAlignment="Center" FontSize="16" Grid.Column="2" Grid.Row="7"/>
-                <Label Content="00" HorizontalAlignment="Center" FontSize="16" Grid.Column="2" Grid.Row="8"/>
+                <Label Name="hz0LB" Content="00" HorizontalAlignment="Center" FontSize="16" Grid.Column="2" Grid.Row="3"/>
+                <Label Name="hz1LB" Content="00" HorizontalAlignment="Center" FontSize="16" Grid.Column="2" Grid.Row="4"/>
+                <Label Name="hz2LB" Content="00" HorizontalAlignment="Center" FontSize="16" Grid.Column="2" Grid.Row="5"/>
+                <Label Name="hz3LB" Content="00" HorizontalAlignment="Center" FontSize="16" Grid.Column="2" Grid.Row="6"/>
+                <Label Name="hz4LB" Content="00" HorizontalAlignment="Center" FontSize="16" Grid.Column="2" Grid.Row="7"/>
+                <Label Name="hz5LB" Content="00" HorizontalAlignment="Center" FontSize="16" Grid.Column="2" Grid.Row="8"/>
 
 
                 <Label Content="类型" HorizontalAlignment="Center" FontSize="18" Grid.Column="3" Grid.Row="2"/>
-                <Label Content="二同号" HorizontalAlignment="Center" FontSize="16" Grid.Column="3" Grid.Row="3"/>
-                <Label Content="二同号" HorizontalAlignment="Center" FontSize="16" Grid.Column="3" Grid.Row="4"/>
-                <Label Content="二同号" HorizontalAlignment="Center" FontSize="16" Grid.Column="3" Grid.Row="5"/>
-                <Label Content="二同号" HorizontalAlignment="Center" FontSize="16" Grid.Column="3" Grid.Row="6"/>
-                <Label Content="二同号" HorizontalAlignment="Center" FontSize="16" Grid.Column="3" Grid.Row="7"/>
-                <Label Content="二同号" HorizontalAlignment="Center" FontSize="16" Grid.Column="3" Grid.Row="8"/>
+                <Label Name="type0LB" Content="二同号" HorizontalAlignment="Center" FontSize="16" Grid.Column="3" Grid.Row="3"/>
+                <Label Name="type1LB" Content="二同号" HorizontalAlignment="Center" FontSize="16" Grid.Column="3" Grid.Row="4"/>
+                <Label Name="type2LB" Content="二同号" HorizontalAlignment="Center" FontSize="16" Grid.Column="3" Grid.Row="5"/>
+                <Label Name="type3LB" Content="二同号" HorizontalAlignment="Center" FontSize="16" Grid.Column="3" Grid.Row="6"/>
+                <Label Name="type4LB" Content="二同号" HorizontalAlignment="Center" FontSize="16" Grid.Column="3" Grid.Row="7"/>
+                <Label Name="type5LB" Content="二同号" HorizontalAlignment="Center" FontSize="16" Grid.Column="3" Grid.Row="8"/>
                 </Grid>
         </Border>
         <Label Name="jh" Content="Label" HorizontalAlignment="Left" Margin="30,65,0,0" VerticalAlignment="Top"/>
