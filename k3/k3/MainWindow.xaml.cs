@@ -31,12 +31,11 @@ namespace k3
         {
             InitializeComponent();
             this.Loaded += MainWindow_Loaded;
-
-            getZhcwJson();
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            
             this.Dispatcher.BeginInvoke(new Action(updateTime), null);
             this.Dispatcher.BeginInvoke(new Action(InitTimer), null);
         }
@@ -50,11 +49,41 @@ namespace k3
                 await Task.Delay(100);
             }
         }
+        private void updateWindow(JObject init_result)
+        {
+            var qh = int.Parse(init_result["list"][0]["issue"].ToString().Substring(7, 2));
+            var qh_next = int.Parse(init_result["issue"].ToString().Substring(7, 2));
+            DateTime startTime = Convert.ToDateTime(init_result["startTime"].ToString());
+            DateTime endTime = Convert.ToDateTime(init_result["endTime"].ToString());
+            nextIssueLB.Content = "距" + init_result["issue"].ToString() + "期开奖剩余：";
+            for (int i = 0; i <= 5; i++)
+            {
+                string qhlbName = "qh" + i + "LB";
+                string jhlbName = "jh" + i + "LB";
+                string hzlbName = "hz" + i + "LB";
+                string typelbName = "type" + i + "LB";
+
+                Label qhLB = this.FindName(qhlbName) as Label;
+                Label jhLB = this.FindName(jhlbName) as Label;
+                Label hzLB = this.FindName(hzlbName) as Label;
+                Label typeLB = this.FindName(typelbName) as Label;
+                if (qhLB != null && jhLB != null)
+                {
+                    qhLB.Content = init_result["list"][i]["issue"].ToString();
+                    jhLB.Content = init_result["list"][i]["awardNum"].ToString().Replace(",", "");
+                }
+                hzLB.Content = (int.Parse(jhLB.Content.ToString().Substring(0, 1)) + int.Parse(jhLB.Content.ToString().Substring(1, 1)) + int.Parse(jhLB.Content.ToString().Substring(2, 1))).ToString();
+            }
+        }
         private async void InitTimer()
         {
-            JObject init_result = JsonConvert.DeserializeObject(zhcw()) as JObject;
+            string url = "http://data.zhcw.com/k3/index.php?act=kstb&provinceCode=22";
+            string jsonUrl = "http://data.zhcw.com/port/client_json.php?transactionType=10130307";
+            CookieContainer cc = Http.HttpService.GetCookie(url);
+            JObject init_result = JsonConvert.DeserializeObject(Http.HttpService.GetHtml(jsonUrl, cc)) as JObject;
             
             bool checkJson = false;
+            bool updateFlag = false;
             var qh = int.Parse(init_result["list"][0]["issue"].ToString().Substring(7, 2));
             var qh_next = int.Parse(init_result["issue"].ToString().Substring(7, 2));
             DateTime startTime = Convert.ToDateTime(init_result["startTime"].ToString());
@@ -85,8 +114,9 @@ namespace k3
                 {
                     if (checkJson)
                     {
-                        init_result = JsonConvert.DeserializeObject(zhcw()) as JObject;
+                        init_result = JsonConvert.DeserializeObject(Http.HttpService.GetHtml(jsonUrl, cc)) as JObject;
                         checkJson = false;
+                        updateFlag = true;
                     }
                     //await Task.Run(() => Thread.Sleep(900));
                     nextIssueLB.Content = "距" + init_result["issue"].ToString() + "期开奖剩余：获取中...";
@@ -97,7 +127,7 @@ namespace k3
                     startTime = Convert.ToDateTime(init_result["startTime"].ToString());
                     endTime = Convert.ToDateTime(init_result["endTime"].ToString());
                     
-                    //await Task.Run(() => Thread.Sleep(5000));
+                    await Task.Run(() => Thread.Sleep(3000));
                     checkJson = true;
                     //await Task.Delay(100);
                                               
@@ -106,10 +136,17 @@ namespace k3
                 TimeSpan subTime = endTime - startTime;
                 if (qh_next - qh == 1)
                 {
-                    if(subTime.Minutes<=0 && subTime.Seconds <= 0)
+                    if (updateFlag)
+                    {
+                        updateWindow(init_result);
+                        updateFlag = false;
+                    }
+                    if (DateTime.Compare(startTime, endTime) >=0)
                     {
                         //checkJson = true;
-                        init_result = JsonConvert.DeserializeObject(zhcw()) as JObject;
+                        nextIssueLB.Content = "距" + init_result["issue"].ToString() + "期开奖剩余：获取中...";
+                        await Task.Run(() => Thread.Sleep(3000));
+                        init_result = JsonConvert.DeserializeObject(Http.HttpService.GetHtml(jsonUrl, Http.HttpService.GetCookie(url))) as JObject;
                         qh = int.Parse(init_result["list"][0]["issue"].ToString().Substring(7, 2));
                         qh_next = int.Parse(init_result["issue"].ToString().Substring(7, 2));
                         //await Task.Run(() => Thread.Sleep(5000));
@@ -124,8 +161,11 @@ namespace k3
                 if (qh_next - qh == -86)
                 {
                     nextIssueLB.Content = "每天08:20开售";
-                    break;
-                    //await Task.Run(() => Thread.Sleep(5000));
+                    //break;
+                    await Task.Run(() => Thread.Sleep(5000));
+                    init_result = JsonConvert.DeserializeObject(Http.HttpService.GetHtml(jsonUrl, cc)) as JObject;
+                    qh = int.Parse(init_result["list"][0]["issue"].ToString().Substring(7, 2));
+                    qh_next = int.Parse(init_result["issue"].ToString().Substring(7, 2));
                     //await Task.Delay(100);
                 }
 
@@ -134,75 +174,6 @@ namespace k3
             }
 
 
-        }
-
-        private async void getZhcwJson()
-        {
-            JObject init_result = JsonConvert.DeserializeObject(zhcw()) as JObject;
-            
-            DateTime startTime = Convert.ToDateTime(init_result["startTime"].ToString());
-            DateTime endTime = Convert.ToDateTime(init_result["endTime"].ToString());
-
-            nextIssueLB.Content = "距" + init_result["issue"].ToString() + "期开奖剩余：" ;
-
-            for (int i = 0; i <= 5; i++)
-            {
-                string qhlbName = "qh" + i + "LB";
-                string jhlbName = "jh" + i + "LB";
-                
-                Label qhLB = this.FindName(qhlbName) as Label;
-                Label jhLB = this.FindName(jhlbName) as Label;
-                if (qhLB != null && jhLB!=null)
-                {
-                    qhLB.Content = init_result["list"][i]["issue"].ToString();
-                    jhLB.Content = init_result["list"][i]["awardNum"].ToString().Replace(",", "");
-                }
-            }
-
-            while (true)
-            {
-                await Task.Run(() => Thread.Sleep(900));
-                jh.Content = DateTime.Now.ToString();
-                await Task.Delay(100);
-            }
-
-        }
-        private string zhcw()
-        {
-            try
-            {
-                string url = "http://data.zhcw.com/k3/index.php?act=kstb&provinceCode=22";
-                HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
-                req.Method = "GET";
-                req.AllowAutoRedirect = false;
-                req.ContentType = "application/x-www-form-urlencoded";
-
-
-                HttpWebResponse res = (HttpWebResponse)req.GetResponse();
-                string cookies = res.Headers.Get("Set-Cookie");
-
-                string jsonUrl = "http://data.zhcw.com/port/client_json.php?transactionType=10130307";
-                HttpWebRequest req1 = (HttpWebRequest)WebRequest.Create(jsonUrl);
-                req1.Method = "GET";
-                req1.AllowAutoRedirect = false;
-                req1.ContentType = "application/x-www-form-urlencoded";
-
-                req1.CookieContainer = new CookieContainer();
-                req1.CookieContainer.SetCookies(req1.RequestUri, cookies);
-                HttpWebResponse res1 = (HttpWebResponse)req1.GetResponse();
-                string html = new StreamReader(res1.GetResponseStream()).ReadToEnd();
-                return html;
-            }
-            catch
-            {
-                return null;
-            }
-            finally
-            {
-                
-            }
-
-            
         }
 
     }
