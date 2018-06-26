@@ -2,9 +2,12 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -29,10 +32,49 @@ namespace k3
     /// </summary>
     public partial class MainWindow : Window
     {
+        [DllImport("User32.dll")]
+        private static extern bool ShowWindowAsync(IntPtr hWnd, int cmdShow);
+        [DllImport("User32.dll")]
+        private static extern bool SetForegroundWindow(IntPtr hWnd);
+        private const int WS_SHOWNORMAL = 1;
+        private static Process RuningInstance()
+        {
+            Process currentProcess = Process.GetCurrentProcess();
+            Process[] Processes = Process.GetProcessesByName(currentProcess.ProcessName);
+            foreach (Process process in Processes)
+            {
+                if (process.Id != currentProcess.Id)
+                {
+                    if (Assembly.GetExecutingAssembly().Location.Replace("/", "\\") == currentProcess.MainModule.FileName)
+                    {
+                        return process;
+                    }
+                }
+            }
+            return null;
+        }
+        public static void HandleRunningInstance(Process instance)
+        {
+            ShowWindowAsync(instance.MainWindowHandle, WS_SHOWNORMAL); //显示，可以注释掉
+            SetForegroundWindow(instance.MainWindowHandle);            //放到前端
+        }
+
+
         public MainWindow()
         {
-            InitializeComponent();
-            this.Loaded += MainWindow_Loaded;
+            Process process = RuningInstance();
+            if (process == null)
+            {
+                InitializeComponent();
+                this.Loaded += MainWindow_Loaded;
+
+            }
+            else
+            {
+                HandleRunningInstance(process);
+                System.Environment.Exit(1);
+            }
+
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -198,6 +240,11 @@ namespace k3
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void Minimized_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
         }
     }
 }

@@ -60,7 +60,7 @@ namespace k3.Http
 
                 return html;
             }
-            catch (Exception e)
+            catch 
             {
                 return string.Empty;
             }

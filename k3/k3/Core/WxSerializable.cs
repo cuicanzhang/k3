@@ -50,7 +50,7 @@ namespace k3.Core
                     fStream.Close();
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 //写日志
                 //Tools.WriteLog(ex.ToString());
@@ -74,7 +74,7 @@ namespace k3.Core
                         return null;
                 }
             }
-            catch (Exception exobj)
+            catch 
             {
                 //Tools.WriteLog(exobj.ToString());
                 return null;

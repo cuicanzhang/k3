@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:k3"
         mc:Ignorable="d"
-        Title="MainWindow" Height="440" Width="300" AllowsTransparency="True" WindowStyle="None">
+        Title="MainWindow" Height="440" Width="300" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen">
     <Grid MouseLeftButtonDown="Grid_MouseLeftButtonDown">
         <Border BorderBrush="Black" BorderThickness="1" >
             <Grid Margin="0,0,0,0" HorizontalAlignment="Center" Width="auto" Height="auto">
@@ -27,7 +27,8 @@
                     <ColumnDefinition Width="80"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Label Name="DateTimeLB" HorizontalAlignment="Center" FontSize="18" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Margin="0,0,10,0"/>
-                <Button Content="X" HorizontalAlignment="Right"  VerticalAlignment="Top" Width="40" FontSize="14" BorderBrush="{x:Null}" Background="{x:Null}" Click="Exit_Click"  Grid.Column="3" Grid.Row="0"/>
+                <Button Content="—" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="30" FontSize="13" BorderBrush="{x:Null}" Background="{x:Null}" Click="Minimized_Click" Grid.Column="3" Grid.Row="0" Margin="20,-1,0,0"/>
+                <Button Content="X" HorizontalAlignment="Right"  VerticalAlignment="Top" Width="30" FontSize="12" BorderBrush="{x:Null}" Background="{x:Null}" Click="Exit_Click"  Grid.Column="3" Grid.Row="0"/>
                 <Label Name="nextIssueLB" Content="" FontSize="16" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Margin="0,0,10,0"/>
                 <Label Content="期  号" HorizontalAlignment="Center" FontSize="18" Grid.Column="0" Grid.Row="2"/>
                 <Label Name="qh0LB" HorizontalAlignment="Center" Content="" FontSize="16" Grid.Column="0" Grid.Row="3"/>
@@ -56,7 +57,7 @@
                 <Label Name="hz5LB" Content="" HorizontalAlignment="Center" FontSize="16" Grid.Column="2" Grid.Row="8"/>
 
 
-                <Label Content="类型" HorizontalAlignment="Center" FontSize="18" Grid.Column="3" Grid.Row="2"/>
+                <Label Content="" HorizontalAlignment="Center" FontSize="18" Grid.Column="3" Grid.Row="2"/>
                 <Label Name="type0LB" Content="" HorizontalAlignment="Center" FontSize="16" Grid.Column="3" Grid.Row="3"/>
                 <Label Name="type1LB" Content="" HorizontalAlignment="Center" FontSize="16" Grid.Column="3" Grid.Row="4"/>
                 <Label Name="type2LB" Content="" HorizontalAlignment="Center" FontSize="16" Grid.Column="3" Grid.Row="5"/>
