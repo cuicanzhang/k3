@@ -146,7 +146,7 @@ namespace k3
                         //checkJson = true;
                         nextIssueLB.Content = "距" + init_result["issue"].ToString() + "期开奖剩余：获取中...";
                         await Task.Run(() => Thread.Sleep(3000));
-                        init_result = JsonConvert.DeserializeObject(Http.HttpService.GetHtml(jsonUrl, Http.HttpService.GetCookie(url))) as JObject;
+                        init_result = JsonConvert.DeserializeObject(Http.HttpService.GetHtml(jsonUrl, cc)) as JObject;
                         qh = int.Parse(init_result["list"][0]["issue"].ToString().Substring(7, 2));
                         qh_next = int.Parse(init_result["issue"].ToString().Substring(7, 2));
                         //await Task.Run(() => Thread.Sleep(5000));
@@ -176,5 +176,16 @@ namespace k3
 
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            PlaySound();
+        }
+        private void PlaySound()
+        {
+            Uri uri = new Uri(@"pack://application:,,,/Media/movepoint.wav");
+            var player = new MediaPlayer();
+            player.Open(uri);
+            player.Play();
+        }
     }
 }
