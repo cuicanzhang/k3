@@ -22,6 +22,8 @@ using System.Windows.Threading;
 
 namespace k3
 {
+
+
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
@@ -138,6 +140,7 @@ namespace k3
                 {
                     if (updateFlag)
                     {
+                        PlaySound();
                         updateWindow(init_result);
                         updateFlag = false;
                     }
@@ -176,16 +179,25 @@ namespace k3
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            PlaySound();
-        }
         private void PlaySound()
         {
-            Uri uri = new Uri(@"pack://application:,,,/Media/movepoint.wav");
+            Uri uri = new Uri(@"pack://siteoforigin:,,,/MP3/sz.mp3");
             var player = new MediaPlayer();
             player.Open(uri);
             player.Play();
+        }
+        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                this.DragMove();
+            }
+            catch { }
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
