@@ -119,7 +119,7 @@ namespace k3
                         updateFlag = true;
                     }
                     //await Task.Run(() => Thread.Sleep(900));
-                    nextIssueLB.Content = "距" + init_result["list"][0]["issue"].ToString() + "期开奖剩余：获取中...";
+                    nextIssueLB.Content = "距" + (int.Parse(init_result["issue"].ToString())-1).ToString() + "期开奖剩余：获取中...";
                     //await Task.Delay(100);
                    
                     qh = int.Parse(init_result["list"][0]["issue"].ToString().Substring(7, 2));
