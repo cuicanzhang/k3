@@ -1,11 +1,11 @@
-﻿<Window x:Class="k3.MainWindow"
+﻿<Window x:Class="K3JL.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:k3"
+        xmlns:local="clr-namespace:K3JL"
         mc:Ignorable="d"
-        Title="MainWindow" Height="440" Width="300" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="450" Width="345" AllowsTransparency="True" WindowStyle="None" Topmost="True" WindowStartupLocation="CenterScreen">
     <Grid MouseLeftButtonDown="Grid_MouseLeftButtonDown">
         <Border BorderBrush="Black" BorderThickness="1" >
             <Grid Margin="0,0,0,0" HorizontalAlignment="Center" Width="auto" Height="auto">
@@ -13,25 +13,29 @@
                     <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GradientActiveCaptionColorKey}}"/>
                 </Grid.Background>
                 <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"></ColumnDefinition>
-                    <ColumnDefinition Width="60"></ColumnDefinition>
+                    <ColumnDefinition Width="120"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
                     <ColumnDefinition Width="60"></ColumnDefinition>
                     <ColumnDefinition Width="80"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Label Name="DateTimeLB" HorizontalAlignment="Center" FontSize="18" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Margin="0,0,10,0"/>
                 <Button Content="—" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="30" FontSize="13" BorderBrush="{x:Null}" Background="{x:Null}" Click="Minimized_Click" Grid.Column="3" Grid.Row="0" Margin="20,-1,0,0"/>
-                <Button Content="X" HorizontalAlignment="Right"  VerticalAlignment="Top" Width="30" FontSize="12" BorderBrush="{x:Null}" Background="{x:Null}" Click="Exit_Click"  Grid.Column="3" Grid.Row="0"/>
+                <Button Content="X" HorizontalAlignment="Right"  VerticalAlignment="Top" Width="30" FontSize="13" BorderBrush="{x:Null}" Background="{x:Null}" Click="Exit_Click"  Grid.Column="3" Grid.Row="0"/>
                 <Label Name="nextIssueLB" Content="" FontSize="16" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Margin="0,0,10,0"/>
                 <Label Content="期  号" HorizontalAlignment="Center" FontSize="18" Grid.Column="0" Grid.Row="2"/>
                 <Label Name="qh0LB" HorizontalAlignment="Center" Content="" FontSize="16" Grid.Column="0" Grid.Row="3"/>
@@ -40,18 +44,25 @@
                 <Label Name="qh3LB" HorizontalAlignment="Center" Content="" FontSize="16" Grid.Column="0" Grid.Row="6"/>
                 <Label Name="qh4LB" HorizontalAlignment="Center" Content="" FontSize="16" Grid.Column="0" Grid.Row="7"/>
                 <Label Name="qh5LB" HorizontalAlignment="Center" Content="" FontSize="16" Grid.Column="0" Grid.Row="8"/>
+                <Label Name="qh6LB" HorizontalAlignment="Center" Content="" FontSize="16" Grid.Column="0" Grid.Row="9"/>
+                <Label Name="qh7LB" HorizontalAlignment="Center" Content="" FontSize="16" Grid.Column="0" Grid.Row="10"/>
+                <Label Name="qh8LB" HorizontalAlignment="Center" Content="" FontSize="16" Grid.Column="0" Grid.Row="11"/>
+                <Label Name="qh9LB" HorizontalAlignment="Center" Content="" FontSize="16" Grid.Column="0" Grid.Row="12"/>
+
+                <Label Content="号  码" HorizontalAlignment="Center" FontSize="18" Grid.Column="1" Grid.Row="2"/>
+                <Image Name="hm0Img"  HorizontalAlignment="Center"  Grid.Column="1" Grid.Row="3"/>
+                <Image Name="hm1Img"  HorizontalAlignment="Center" Grid.Column="1" Grid.Row="4"/>
+                <Image Name="hm2Img"  HorizontalAlignment="Center" Grid.Column="1" Grid.Row="5"/>
+                <Image Name="hm3Img"  HorizontalAlignment="Center" Grid.Column="1" Grid.Row="6"/>
+                <Image Name="hm4Img"  HorizontalAlignment="Center" Grid.Column="1" Grid.Row="7"/>
+                <Image Name="hm5Img"  HorizontalAlignment="Center" Grid.Column="1" Grid.Row="8"/>
+                <Image Name="hm6Img"  HorizontalAlignment="Center" Grid.Column="1" Grid.Row="9"/>
+                <Image Name="hm7Img"  HorizontalAlignment="Center" Grid.Column="1" Grid.Row="10"/>
+                <Image Name="hm8Img"  HorizontalAlignment="Center" Grid.Column="1" Grid.Row="11"/>
+                <Image Name="hm9Img"  HorizontalAlignment="Center" Grid.Column="1" Grid.Row="12"/>
 
 
-                <Label Content="开奖" HorizontalAlignment="Center" FontSize="18" Grid.Column="1" Grid.Row="2"/>
-                <Label Name="jh0LB" HorizontalAlignment="Center" Content="" FontSize="16" Grid.Column="1" Grid.Row="3"/>
-                <Label Name="jh1LB" HorizontalAlignment="Center" Content="" FontSize="16" Grid.Column="1" Grid.Row="4"/>
-                <Label Name="jh2LB" HorizontalAlignment="Center" Content="" FontSize="16" Grid.Column="1" Grid.Row="5"/>
-                <Label Name="jh3LB" HorizontalAlignment="Center" Content="" FontSize="16" Grid.Column="1" Grid.Row="6"/>
-                <Label Name="jh4LB" HorizontalAlignment="Center" Content="" FontSize="16" Grid.Column="1" Grid.Row="7"/>
-                <Label Name="jh5LB" HorizontalAlignment="Center" Content="" FontSize="16" Grid.Column="1" Grid.Row="8"/>
-
-
-                <Label Content="和值" HorizontalAlignment="Center" FontSize="18" Grid.Column="2" Grid.Row="2"/>
+                <Label Content="" HorizontalAlignment="Center" FontSize="18" Grid.Column="2" Grid.Row="2"/>
                 <Label Name="hz0LB" Content="" HorizontalAlignment="Center" FontSize="16" Grid.Column="2" Grid.Row="3"/>
                 <Label Name="hz1LB" Content="" HorizontalAlignment="Center" FontSize="16" Grid.Column="2" Grid.Row="4"/>
                 <Label Name="hz2LB" Content="" HorizontalAlignment="Center" FontSize="16" Grid.Column="2" Grid.Row="5"/>
