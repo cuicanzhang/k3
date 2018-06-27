@@ -10,11 +10,7 @@ namespace K3Drawing.Layout
 {
     class GridInit
     {
-        public GridInit()
-        {
-
-        }
-        public void Init(Grid GMain)
+        public static Grid Init(Grid GMain)
         {
             for (int i = 0; i < 20; i++)
             {
@@ -185,6 +181,7 @@ namespace K3Drawing.Layout
                 kd025LB.SetValue(Grid.ColumnProperty, i + 32);
                 GMain.Children.Add(kd025LB);
             }
+            return GMain;
         }
     }
 }

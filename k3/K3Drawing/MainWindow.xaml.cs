@@ -23,11 +23,23 @@ namespace K3Drawing
         public MainWindow()
         {
             InitializeComponent();
+
+            
             MainMwindow_Load();
         }
         void MainMwindow_Load()
         {
-            
+            Layout.GridInit.Init(GMain);
+            Label qhLB = new Label
+            {
+                Content = "11111",
+                HorizontalAlignment = HorizontalAlignment.Center,
+
+            };
+            qhLB.SetValue(Grid.RowProperty, 0);
+            qhLB.SetValue(Grid.ColumnProperty, 3);
+            qhLB.SetValue(Grid.RowProperty,3);
+            GMain.Children.Add(qhLB);
         }
     }
 }
