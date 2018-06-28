@@ -62,11 +62,20 @@ namespace K3Drawing
                 }
                 for(int j = 0; j < 15; j++)
                 {
-                    if (hz == j)
+                    if (hz == j){GMain.Children.Add(Layout.GridInit.TextBL(hz.ToString(), i, j + 7, 0, 0));}
+                    if (hz >= 10){GMain.Children.Add(Layout.GridInit.TextBL("大", i, 26, 0, 0));}
+                        else{GMain.Children.Add(Layout.GridInit.TextBL("小", i, 27, 0, 0));}
+                    if (hz % 2 != 0){GMain.Children.Add(Layout.GridInit.TextBL("单", i, 28, 0, 0));}
+                        else { GMain.Children.Add(Layout.GridInit.TextBL("双", i, 29, 0, 0)); }
+                }
+                for(int j = 0; j < 6; j++)
+                {
+                    if (int.Parse(jh.Substring(2, 1)) - int.Parse(jh.Substring(0, 1)) == j)
                     {
-                        GMain.Children.Add(Layout.GridInit.TextBL(hz.ToString(), i, j + 7, 0, 0));
+                        GMain.Children.Add(Layout.GridInit.TextBL(j.ToString(), i, j+30, 0, 0));
                     }
                 }
+                
                 
 
                 if (i > 2){i--;}else { break; }
