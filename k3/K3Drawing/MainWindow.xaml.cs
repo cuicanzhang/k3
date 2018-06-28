@@ -79,7 +79,7 @@ namespace K3Drawing
             {
                 BorderBrush = Brushes.Black,
                 BorderThickness = new Thickness(0, 0, 1, 0),
-                Background = (Brush)converter.ConvertFromString("#FFFFFFFF"),
+                //Background = (Brush)converter.ConvertFromString("#FFFFFFFF"),
             };
             zxB.SetValue(Grid.RowProperty, 2);
             zxB.SetValue(Grid.ColumnProperty, 4);

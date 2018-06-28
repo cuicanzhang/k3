@@ -6,5 +6,5 @@
         xmlns:local="clr-namespace:K3Drawing"
         mc:Ignorable="d"
         Title="MainWindow" Height="831" Width="502" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen">
-    <Grid Name = "GMain" />
+    <Grid Name = "GMain" local:GridHelper.ShowBorder="True" />
 </Window>

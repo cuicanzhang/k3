@@ -67,6 +67,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GridHelper.cs" />
     <Compile Include="Http\HttpService.cs" />
     <Compile Include="Layout\GridInit.cs" />
     <Compile Include="MainWindow.xaml.cs">
