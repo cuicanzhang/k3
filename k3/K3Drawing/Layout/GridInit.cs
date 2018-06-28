@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace K3Drawing.Layout
 {
@@ -20,7 +21,8 @@ namespace K3Drawing.Layout
             for (int i = 0; i < 38; i++)
             {
                 GMain.ColumnDefinitions.Add(new ColumnDefinition());//创建列
-                GMain.ColumnDefinitions[i].Width = new GridLength(20, GridUnitType.Pixel);
+                //GMain.ColumnDefinitions[i].Width = new GridLength(16, GridUnitType.Pixel);
+                GMain.ColumnDefinitions[i].Width = new GridLength();
             }
             GMain.Children.Add(TextBL("期\n号", 0, 0, 2, 0));
             GMain.Children.Add(TextBL("奖号", 0, 1, 0, 3));
@@ -59,7 +61,9 @@ namespace K3Drawing.Layout
             {
                 Text = text,
                 HorizontalAlignment = HorizontalAlignment.Center,
-                FontSize = 16,
+                FontSize = 15,
+                //Background=Brushes.Black,
+                //Foreground = Brushes.Red
             };            
             tblname.SetValue(Grid.RowProperty, row);
             tblname.SetValue(Grid.ColumnProperty, col);
@@ -68,7 +72,101 @@ namespace K3Drawing.Layout
             //GMain.Children.Add(jhTBL);
             return tblname;
         }
-        
+        public static TextBlock TextBL(string text,int fontsize, int row, int col, int rowspan = 0, int colspan = 0)
+        {
+            TextBlock tblname = new TextBlock()
+            {
+                
+                Text = text,
+                FontSize = fontsize,
+                //Background=Brushes.Black,
+                //Foreground = Brushes.Red,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center,
+            };
+            tblname.SetValue(Grid.RowProperty, row);
+            tblname.SetValue(Grid.ColumnProperty, col);
+            if (rowspan != 0) { tblname.SetValue(Grid.RowSpanProperty, rowspan); }
+            if (colspan != 0) { tblname.SetValue(Grid.ColumnSpanProperty, colspan); }
+            //GMain.Children.Add(jhTBL);
+            return tblname;
+        }
+        public static TextBlock TextYellowBL(string text, int fontsize, int row, int col, int rowspan = 0, int colspan = 0)
+        {
+            TextBlock tblname = new TextBlock()
+            {
+
+                Text = text,
+                FontSize = fontsize,
+                Background=Brushes.Yellow,
+                //Foreground = Brushes.Red,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center,
+            };
+            tblname.SetValue(Grid.RowProperty, row);
+            tblname.SetValue(Grid.ColumnProperty, col);
+            if (rowspan != 0) { tblname.SetValue(Grid.RowSpanProperty, rowspan); }
+            if (colspan != 0) { tblname.SetValue(Grid.ColumnSpanProperty, colspan); }
+            //GMain.Children.Add(jhTBL);
+            return tblname;
+        }
+        public static TextBlock TextRedBL(string text, int row, int col, int rowspan = 0, int colspan = 0)
+        {
+            TextBlock tblname = new TextBlock()
+            {
+
+                Text = text,
+                FontSize = 15,
+                //Background=Brushes.Black,
+                Foreground = Brushes.Red,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center,
+            };
+            tblname.SetValue(Grid.RowProperty, row);
+            tblname.SetValue(Grid.ColumnProperty, col);
+            if (rowspan != 0) { tblname.SetValue(Grid.RowSpanProperty, rowspan); }
+            if (colspan != 0) { tblname.SetValue(Grid.ColumnSpanProperty, colspan); }
+            //GMain.Children.Add(jhTBL);
+            return tblname;
+        }
+        public static TextBlock TextBlueBL(string text, int row, int col, int rowspan = 0, int colspan = 0)
+        {
+            TextBlock tblname = new TextBlock()
+            {
+
+                Text = text,
+                FontSize = 15,
+                //Background=Brushes.Black,
+                Foreground = Brushes.Blue,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center,
+            };
+            tblname.SetValue(Grid.RowProperty, row);
+            tblname.SetValue(Grid.ColumnProperty, col);
+            if (rowspan != 0) { tblname.SetValue(Grid.RowSpanProperty, rowspan); }
+            if (colspan != 0) { tblname.SetValue(Grid.ColumnSpanProperty, colspan); }
+            //GMain.Children.Add(jhTBL);
+            return tblname;
+        }
+        public static TextBlock TextGreenBL(string text, int row, int col, int rowspan = 0, int colspan = 0)
+        {
+            TextBlock tblname = new TextBlock()
+            {
+
+                Text = text,
+                FontSize = 15,
+                //Background=Brushes.Black,
+                Foreground = Brushes.Green,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center,
+            };
+            tblname.SetValue(Grid.RowProperty, row);
+            tblname.SetValue(Grid.ColumnProperty, col);
+            if (rowspan != 0) { tblname.SetValue(Grid.RowSpanProperty, rowspan); }
+            if (colspan != 0) { tblname.SetValue(Grid.ColumnSpanProperty, colspan); }
+            //GMain.Children.Add(jhTBL);
+            return tblname;
+        }
 
     }
 }
