@@ -21,8 +21,8 @@ namespace K3Drawing.Layout
             for (int i = 0; i < 38; i++)
             {
                 GMain.ColumnDefinitions.Add(new ColumnDefinition());//创建列
-                //GMain.ColumnDefinitions[i].Width = new GridLength(16, GridUnitType.Pixel);
-                GMain.ColumnDefinitions[i].Width = new GridLength();
+                GMain.ColumnDefinitions[i].Width = new GridLength(14, GridUnitType.Pixel);
+                //GMain.ColumnDefinitions[i].Width = new GridLength();
             }
             GMain.Children.Add(TextBL("期\n号", 0, 0, 2, 0));
             GMain.Children.Add(TextBL("奖号", 0, 1, 0, 3));
@@ -136,6 +136,7 @@ namespace K3Drawing.Layout
 
                 Text = text,
                 FontSize = 15,
+                //FontFamily = new FontFamily("楷体"),
                 //Background=Brushes.Black,
                 Foreground = Brushes.Blue,
                 HorizontalAlignment = HorizontalAlignment.Center,

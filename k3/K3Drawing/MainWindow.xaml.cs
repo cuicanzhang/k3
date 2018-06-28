@@ -36,8 +36,123 @@ namespace K3Drawing
 
         private void dispData()
         {
+            Border ltB = new Border
+            {
+                BorderBrush = Brushes.Black,
+                Background = Brushes.Yellow,
+            };
+            ltB.SetValue(Grid.RowProperty,2);
+            ltB.SetValue(Grid.ColumnProperty, 0);
+            ltB.SetValue(Grid.RowSpanProperty, 2);
+            ltB.SetValue(Grid.ColumnSpanProperty, 38);
+            GMain.Children.Add(ltB);
+
+            var converter = new System.Windows.Media.BrushConverter();
+            //var brush = (Brush)converter.ConvertFromString("#FFFFFF90");
+            //Fill = brush;
+
+            Border qhB = new Border
+            {
+                BorderBrush = Brushes.Black,
+                BorderThickness= new Thickness(0,0,1,0),
+                Background = (Brush)converter.ConvertFromString("#FFFDFEFE"),
+
+            };
+            qhB.SetValue(Grid.RowProperty, 0);
+            qhB.SetValue(Grid.ColumnProperty, 0);
+            qhB.SetValue(Grid.RowSpanProperty, 50);
+            GMain.Children.Add(qhB);
+
+            Border jhB = new Border
+            {
+                BorderBrush = Brushes.Black,
+                BorderThickness = new Thickness(0, 0, 1, 0),
+                Background = (Brush)converter.ConvertFromString("#FFF0F0F0"),
+            };
+            jhB.SetValue(Grid.RowProperty, 2);
+            jhB.SetValue(Grid.ColumnProperty, 1);
+            jhB.SetValue(Grid.RowSpanProperty, 50);
+            jhB.SetValue(Grid.ColumnSpanProperty, 3);
+            GMain.Children.Add(jhB);
+
+            Border zxB = new Border
+            {
+                BorderBrush = Brushes.Black,
+                BorderThickness = new Thickness(0, 0, 1, 0),
+                Background = (Brush)converter.ConvertFromString("#FFFFFFFF"),
+            };
+            zxB.SetValue(Grid.RowProperty, 2);
+            zxB.SetValue(Grid.ColumnProperty, 4);
+            zxB.SetValue(Grid.RowSpanProperty, 50);
+            zxB.SetValue(Grid.ColumnSpanProperty, 6);
+            GMain.Children.Add(zxB);
+
+            Border hzxB = new Border
+            {
+                BorderBrush = Brushes.Black,
+                //BorderThickness = new Thickness(0, 0, 1, 0),
+                Background = (Brush)converter.ConvertFromString("#FFF0F0F0"),
+            };
+            hzxB.SetValue(Grid.RowProperty, 2);
+            hzxB.SetValue(Grid.ColumnProperty, 10);
+            hzxB.SetValue(Grid.RowSpanProperty, 50);
+            hzxB.SetValue(Grid.ColumnSpanProperty, 10);
+            GMain.Children.Add(hzxB);
+
+            Border hzdB = new Border
+            {
+                BorderBrush = Brushes.Black,
+                BorderThickness = new Thickness(0, 0, 1, 0),
+                Background = (Brush)converter.ConvertFromString("#FFE6E6E6"),
+            };
+            hzdB.SetValue(Grid.RowProperty, 2);
+            hzdB.SetValue(Grid.ColumnProperty, 18);
+            hzdB.SetValue(Grid.RowSpanProperty, 50);
+            hzdB.SetValue(Grid.ColumnSpanProperty, 8);
+            GMain.Children.Add(hzdB);
+
+            Border dxB = new Border
+            {
+                BorderBrush = Brushes.Black,
+                BorderThickness = new Thickness(0, 0, 1, 0),
+                Background = (Brush)converter.ConvertFromString("#FFFFFFFF"),
+            };
+            dxB.SetValue(Grid.RowProperty, 2);
+            dxB.SetValue(Grid.ColumnProperty, 28);
+            dxB.SetValue(Grid.RowSpanProperty, 50);
+            dxB.SetValue(Grid.ColumnSpanProperty, 2);
+            GMain.Children.Add(dxB);
+
+            Border dsB = new Border
+            {
+                BorderBrush = Brushes.Black,
+                BorderThickness = new Thickness(0, 0, 1, 0),
+                Background = (Brush)converter.ConvertFromString("#FFFFFFFF"),
+            };
+            dsB.SetValue(Grid.RowProperty, 2);
+            dsB.SetValue(Grid.ColumnProperty, 26);
+            dsB.SetValue(Grid.RowSpanProperty, 50);
+            dsB.SetValue(Grid.ColumnSpanProperty, 2);
+            GMain.Children.Add(dsB);
+
+            Border kdB = new Border
+            {
+                BorderBrush = Brushes.Black,
+                BorderThickness = new Thickness(0, 0, 0, 0),
+                Background = (Brush)converter.ConvertFromString("#FFFFFFFF"),
+            };
+            kdB.SetValue(Grid.RowProperty, 2);
+            kdB.SetValue(Grid.ColumnProperty, 30);
+            kdB.SetValue(Grid.RowSpanProperty, 50);
+            kdB.SetValue(Grid.ColumnSpanProperty, 6);
+            GMain.Children.Add(kdB);
+
+
+
             Layout.GridInit.Init(GMain);
             //GMain.ShowGridLines=true;
+            //GMain.Background = Brushes.Red;
+            
             
             string url = "http://data.zhcw.com/k3/index.php?act=kstb&provinceCode=22";
             string jsonUrl = "http://data.zhcw.com/port/client_json.php?transactionType=10130307";

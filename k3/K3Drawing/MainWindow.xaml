@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:K3Drawing"
         mc:Ignorable="d"
-        Title="MainWindow" Height="860" Width="456" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen">
-    <Grid Name = "GMain">
-    </Grid>
+        Title="MainWindow" Height="831" Width="502" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="White">
+    <Grid Name = "GMain" />
 </Window>
