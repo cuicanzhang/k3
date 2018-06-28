@@ -6,5 +6,7 @@
         xmlns:local="clr-namespace:K3Drawing"
         mc:Ignorable="d"
         Title="MainWindow" Height="831" Width="502" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen">
-    <Grid Name = "GMain" local:GridHelper.ShowBorder="True" />
+    <Grid Name = "GMain" local:GridHelper.ShowBorder="True" >
+        <TextBlock HorizontalAlignment="Left" Margin="370,610,0,0" TextWrapping="Wrap" Text="123456" VerticalAlignment="Top" Height="50" Width="110" FontFamily="Adobe Gothic Std B"/>
+    </Grid>
 </Window>

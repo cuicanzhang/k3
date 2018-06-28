@@ -62,6 +62,8 @@ namespace K3Drawing.Layout
                 Text = text,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 FontSize = 15,
+                FontFamily=new FontFamily("Adobe Gothic Std B"),
+                FontWeight=FontWeights.Bold,
                 //Background=Brushes.Black,
                 //Foreground = Brushes.Red
             };            
@@ -81,6 +83,7 @@ namespace K3Drawing.Layout
                 FontSize = fontsize,
                 //Background=Brushes.Black,
                 //Foreground = Brushes.Red,
+                FontWeight = FontWeights.Bold,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center,
             };
@@ -99,6 +102,7 @@ namespace K3Drawing.Layout
                 Text = text,
                 FontSize = fontsize,
                 Background=Brushes.Yellow,
+                FontWeight = FontWeights.Bold,
                 //Foreground = Brushes.Red,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center,
@@ -117,6 +121,7 @@ namespace K3Drawing.Layout
 
                 Text = text,
                 FontSize = 15,
+                FontWeight = FontWeights.Bold,
                 //Background=Brushes.Black,
                 Foreground = Brushes.Red,
                 HorizontalAlignment = HorizontalAlignment.Center,
@@ -136,6 +141,7 @@ namespace K3Drawing.Layout
 
                 Text = text,
                 FontSize = 15,
+                FontWeight = FontWeights.Bold,
                 //FontFamily = new FontFamily("楷体"),
                 //Background=Brushes.Black,
                 Foreground = Brushes.Blue,
@@ -156,6 +162,7 @@ namespace K3Drawing.Layout
 
                 Text = text,
                 FontSize = 15,
+                FontWeight = FontWeights.Bold,
                 //Background=Brushes.Black,
                 Foreground = Brushes.DeepSkyBlue,
                 HorizontalAlignment = HorizontalAlignment.Center,
