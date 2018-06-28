@@ -157,7 +157,7 @@ namespace K3Drawing.Layout
                 Text = text,
                 FontSize = 15,
                 //Background=Brushes.Black,
-                Foreground = Brushes.Green,
+                Foreground = Brushes.DeepSkyBlue,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center,
             };

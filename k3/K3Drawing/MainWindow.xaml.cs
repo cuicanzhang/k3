@@ -152,7 +152,7 @@ namespace K3Drawing
             Layout.GridInit.Init(GMain);
             //GMain.ShowGridLines=true;
             //GMain.Background = Brushes.Red;
-            
+
             
             string url = "http://data.zhcw.com/k3/index.php?act=kstb&provinceCode=22";
             string jsonUrl = "http://data.zhcw.com/port/client_json.php?transactionType=10130307";
