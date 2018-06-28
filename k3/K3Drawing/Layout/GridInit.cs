@@ -26,9 +26,9 @@ namespace K3Drawing.Layout
             GMain.Children.Add(TextBL("奖号", 0, 1, 0, 3));
             GMain.Children.Add(TextBL("组选分布图", 0, 4, 0, 6));
             GMain.Children.Add(TextBL("和值", 0, 10, 0, 15));
-            GMain.Children.Add(TextBL("大小", 0, 28, 0, 2));
-            GMain.Children.Add(TextBL("单双", 0, 30, 0, 2));
-            GMain.Children.Add(TextBL("跨度", 0, 32, 0, 6));
+            GMain.Children.Add(TextBL("大小", 0, 26, 0, 2));
+            GMain.Children.Add(TextBL("单双", 0, 28, 0, 2));
+            GMain.Children.Add(TextBL("跨度", 0, 30, 0, 6));
             for (int i = 0; i < 3; i++)
             {
                 GMain.Children.Add(TextBL((i+1).ToString(), 1, i + 1, 0, 0));
@@ -42,13 +42,13 @@ namespace K3Drawing.Layout
                 GMain.Children.Add(TextBL((i + 3).ToString(), 1, i + 10, 0, 0));
             }
 
-            GMain.Children.Add(TextBL("大", 1,28, 0, 0));
-            GMain.Children.Add(TextBL("小", 1, 29, 0, 0));
-            GMain.Children.Add(TextBL("单", 1, 30, 0, 0));
-            GMain.Children.Add(TextBL("双", 1, 31, 0, 0));
+            GMain.Children.Add(TextBL("大", 1,26, 0, 0));
+            GMain.Children.Add(TextBL("小", 1, 27, 0, 0));
+            GMain.Children.Add(TextBL("单", 1, 28, 0, 0));
+            GMain.Children.Add(TextBL("双", 1, 29, 0, 0));
             for (int i = 0; i < 6; i++)
             {
-                GMain.Children.Add(TextBL((i).ToString(), 1, i + 32, 0, 0));
+                GMain.Children.Add(TextBL((i).ToString(), 1, i + 30, 0, 0));
             }
             return GMain;
         }

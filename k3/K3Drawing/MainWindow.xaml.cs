@@ -45,11 +45,29 @@ namespace K3Drawing
             int i = 41;
             foreach (var v in init_result["list"])
             {
+                int hz = 0;
                 //MessageBox.Show(v["issue"].ToString().Substring(7, 2));
                 var qh = int.Parse(v["issue"].ToString().Substring(7, 2));
-
-
-                GMain.Children.Add(Layout.GridInit.TextBL(qh.ToString(), i, 0, 0, 0));
+                GMain.Children.Add(Layout.GridInit.TextBL(qh.ToString().PadLeft(2, '0'), i, 0, 0, 0));
+                var jh= v["awardNum"].ToString().Replace(",", "");
+                for (int j = 0; j < 3; j++)
+                {
+                    //MessageBox.Show(jh.Substring(j, 1));
+                    GMain.Children.Add(Layout.GridInit.TextBL(jh.Substring(j,1), i, j+1, 0, 0));
+                    for(int k = 0; k < 6; k++)
+                    {
+                        if (jh.Substring(j, 1) == (k+1).ToString()) { GMain.Children.Add(Layout.GridInit.TextBL(jh.Substring(j, 1), i, k+4, 0, 0)); }
+                    }
+                    hz += int.Parse(jh.Substring(j, 1));
+                }
+                for(int j = 0; j < 15; j++)
+                {
+                    if (hz == j)
+                    {
+                        GMain.Children.Add(Layout.GridInit.TextBL(hz.ToString(), i, j + 7, 0, 0));
+                    }
+                }
+                
 
                 if (i > 2){i--;}else { break; }
             }
