@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,22 +27,33 @@ namespace K3Drawing
         {
             InitializeComponent();
 
-            
-            MainMwindow_Load();
+            MainWindow_Loaded();
         }
-        void MainMwindow_Load()
+        private void MainWindow_Loaded()
+        {
+            dispData();
+        }
+
+        private void dispData()
         {
             Layout.GridInit.Init(GMain);
-            Label qhLB = new Label
+            GMain.ShowGridLines=true;
+            string url = "http://data.zhcw.com/k3/index.php?act=kstb&provinceCode=22";
+            string jsonUrl = "http://data.zhcw.com/port/client_json.php?transactionType=10130307";
+            CookieContainer cc = Http.HttpService.GetCookie(url);
+            JObject init_result = JsonConvert.DeserializeObject(Http.HttpService.GetHtml(jsonUrl, cc)) as JObject;
+            int i = 41;
+            foreach (var v in init_result["list"])
             {
-                Content = "11111",
-                HorizontalAlignment = HorizontalAlignment.Center,
+                //MessageBox.Show(v["issue"].ToString().Substring(7, 2));
+                var qh = int.Parse(v["issue"].ToString().Substring(7, 2));
 
-            };
-            qhLB.SetValue(Grid.RowProperty, 0);
-            qhLB.SetValue(Grid.ColumnProperty, 3);
-            qhLB.SetValue(Grid.RowProperty,3);
-            GMain.Children.Add(qhLB);
+
+                GMain.Children.Add(Layout.GridInit.TextBL(qh.ToString(), i, 0, 0, 0));
+
+                if (i > 2){i--;}else { break; }
+            }
+
         }
     }
 }
